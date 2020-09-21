@@ -1,4 +1,4 @@
-# Chainlink External Adapter for Binance Smart Chain
+# Chainlink External Adapter for Conflux Network
 
 This adapter is built to fulfill Chainlink oracle requests.
 
@@ -6,15 +6,21 @@ This adapter is built to fulfill Chainlink oracle requests.
 
 The adapter uses the following environment variables:
 
-- `URL`: A URL to a JSON-RPC (HTTP RPC) node on Binance Smart Chain
+- `URL`: A URL to a JSON-RPC (HTTP RPC) node on Conflux Network
 - `PRIVATE_KEY`: The private key to sign transactions with. Must have fulfillment permissions on the Oracle contract.
 
 ## Input Params
 
-- `address` or `bscAddress`: The oracle contract to fulfill the request on
+- `address` or `cfxAddress`: The oracle contract to fulfill the request on
 - `dataPrefix` or `dataPrefix`: The data prefix in the request
-- `functionSelector` or `bscFunctionSelector`: The fulfillment function selector
+- `functionSelector` or `cfxFunctionSelector`: The fulfillment function selector
 - `result` or `value`: The value to fulfill the request with
+
+## Starting Commands
+```
+node
+require('./index.js').server()
+```
 
 ## Output
 

@@ -1,14 +1,15 @@
 {
-  "name": "binance-smart-chain-adapter",
+  "name": "conflux-network-adapter",
   "version": "0.1.0",
   "main": "index.js",
-  "repository": "https://github.com/smartcontractkit/binance-smart-chain-adapter.git",
-  "author": "Jonas Hals <jonas@smartcontract.com>",
+  "repository": "https://github.com/Conflux-Network-Global/conflux-network-adapter.git",
+  "author": "Jonas Hals <jonas@smartcontract.com> (modified by Aaron Lu <aaron@conflux-chain.org>)",
   "license": "MIT",
   "dependencies": {
     "@chainlink/ea-bootstrap": "^0.0.1",
     "@chainlink/external-adapter": "^0.2.3",
-    "ethers": "^5.0.2",
+    "dotenv": "^8.2.0",
+    "js-conflux-sdk": "^1.0.0-alpha.4",
     "web3": "^1.2.9"
   },
   "devDependencies": {
