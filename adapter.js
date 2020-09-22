@@ -4,7 +4,8 @@ const { Requester, Validator } = require("@chainlink/external-adapter");
 require("dotenv").config();
 
 const provider = new Conflux({
-  url: process.env.URL
+  url: process.env.URL,
+  // logger: console, //JSON RPC call logging
 });
 const privateKey = process.env.PRIVATE_KEY;
 const wallet = provider.Account({privateKey});
@@ -25,7 +26,7 @@ const sendFulfillment = async (
     data: web3.utils.bytesToHex(data)
   };
 
-  return await wallet.sendTransaction(tx).confirmed();
+  return await wallet.sendTransaction(tx).executed();
 };
 
 const customParams = {
@@ -38,6 +39,7 @@ const customParams = {
 };
 
 const createRequest = (input, callback) => {
+  console.log(input);
   const validator = new Validator(callback, input, customParams);
   const jobRunID = validator.validated.id;
   const address = validator.validated.data.address;
@@ -46,9 +48,10 @@ const createRequest = (input, callback) => {
   const value = validator.validated.data.value;
 
   const _handleResponse = tx => {
+    console.log(tx);
     const response = {
-      data: { result: tx.hash },
-      result: tx.hash,
+      data: { result: tx.transactionHash },
+      result: tx.transactionHash,
       status: 200
     };
     callback(response.status, Requester.success(jobRunID, response));

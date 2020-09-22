@@ -12,14 +12,13 @@ The adapter uses the following environment variables:
 ## Input Params
 
 - `address` or `cfxAddress`: The oracle contract to fulfill the request on
-- `dataPrefix` or `dataPrefix`: The data prefix in the request
+- `dataPrefix` or `cfxDataPrefix`: The data prefix in the request
 - `functionSelector` or `cfxFunctionSelector`: The fulfillment function selector
 - `result` or `value`: The value to fulfill the request with
 
-## Starting Commands
+## Starting Commands (local deployment)
 ```
-node
-require('./index.js').server()
+node -e "require(\"./index.js\").server()"
 ```
 
 ## Output
