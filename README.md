@@ -8,6 +8,7 @@ The adapter uses the following environment variables:
 
 - `URL`: A URL to a JSON-RPC (HTTP RPC) node on Conflux Network
 - `PRIVATE_KEY`: The private key to sign transactions with. Must have fulfillment permissions on the Oracle contract.
+- `EA_PORT`: Configure this parameter to change the EA port
 
 ## Input Params
 
@@ -18,7 +19,7 @@ The adapter uses the following environment variables:
 
 ## Starting Commands (local deployment)
 ```
-node -e "require(\"./index.js\").server()"
+node -e "require(\"dotenv\").config() && require(\"./index.js\").server()"
 ```
 
 ## Output

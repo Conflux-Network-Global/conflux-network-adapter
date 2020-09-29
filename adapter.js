@@ -5,10 +5,11 @@ require("dotenv").config();
 
 const provider = new Conflux({
   url: process.env.URL,
-  // logger: console, //JSON RPC call logging
+  logger: console, //JSON RPC call logging
 });
 const privateKey = process.env.PRIVATE_KEY;
 const wallet = provider.Account({privateKey});
+console.log("Fulfillment address: ", wallet.address);
 
 const sendFulfillment = async (
   address,
@@ -18,12 +19,13 @@ const sendFulfillment = async (
 ) => {
   const dataPrefixBz = web3.utils.hexToBytes(dataPrefix);
   const functionSelectorBz = web3.utils.hexToBytes(functionSelector);
-  const valueBz = web3.utils.hexToBytes(value);
+  const valueBz = web3.utils.hexToBytes(web3.utils.padLeft(web3.utils.numberToHex(value), 64));
   const data = functionSelectorBz.concat(dataPrefixBz, valueBz);
 
   const tx = {
     to: address,
-    data: web3.utils.bytesToHex(data)
+    data: web3.utils.bytesToHex(data),
+    storageLimit: 128
   };
 
   return await wallet.sendTransaction(tx).executed();
@@ -39,7 +41,7 @@ const customParams = {
 };
 
 const createRequest = (input, callback) => {
-  console.log(input);
+  // console.log(input);
   const validator = new Validator(callback, input, customParams);
   const jobRunID = validator.validated.id;
   const address = validator.validated.data.address;
@@ -48,7 +50,7 @@ const createRequest = (input, callback) => {
   const value = validator.validated.data.value;
 
   const _handleResponse = tx => {
-    console.log(tx);
+    // console.log(tx);
     const response = {
       data: { result: tx.transactionHash },
       result: tx.transactionHash,
