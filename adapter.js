@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const provider = new Conflux({
   url: process.env.URL,
-  logger: console, //JSON RPC call logging
+  // logger: console, //JSON RPC call logging
 });
 const privateKey = process.env.PRIVATE_KEY;
 const wallet = provider.Account({privateKey});
@@ -24,8 +24,10 @@ const sendFulfillment = async (
 
   const tx = {
     to: address,
+    from: wallet.address,
     data: web3.utils.bytesToHex(data),
-    storageLimit: 128
+    storageLimit: 128,
+    gas: 500000
   };
 
   return await wallet.sendTransaction(tx).executed();
