@@ -1984,20 +1984,19 @@ isurl@^1.0.0-alpha5:
     has-to-string-tag-x "^1.2.0"
     is-object "^1.0.1"
 
-js-conflux-sdk@^1.0.0-alpha.4:
-  version "1.0.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/js-conflux-sdk/-/js-conflux-sdk-1.0.0-alpha.4.tgz#c1760c3e749f8607801f0f2f34f79a3af301fde4"
-  integrity sha512-cbeACTlf4PjQRhShVCu4hZZ3MSREfcEMLbf91J2G7qZwDp7s31ugN/4MBDjYapU+k0Rjk1nbIqT+HTyhQPvJKA==
+js-conflux-sdk@^0.13.6:
+  version "0.13.6"
+  resolved "https://registry.yarnpkg.com/js-conflux-sdk/-/js-conflux-sdk-0.13.6.tgz#0820c377d9b537f11fd0c0b8874d8f8ce7c18b85"
+  integrity sha512-u/DHiPcoUWdPOB0Bx2+2FSESJP7I3mUl5GnBE2Mrx/WpIlzw8z5m0ecNuy7EBfGR7TpTHDxChd7Z+mhn5lmnEw==
   dependencies:
     "@babel/runtime" "^7.8.4"
     big.js "^5.2.2"
     jsbi "^3.1.1"
     keccak "^2.0.0"
-    lodash "^4.17.19"
+    lodash "^4.17.15"
     scrypt-js "^3.0.1"
     secp256k1 "^3.7.1"
     superagent "^5.1.0"
-    websocket "^1.0.31"
 
 js-sha3@0.5.7, js-sha3@^0.5.7:
   version "0.5.7"
@@ -2136,7 +2135,7 @@ lodash@^4.17.14:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
-lodash@^4.17.19:
+lodash@^4.17.15:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==

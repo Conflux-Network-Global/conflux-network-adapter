@@ -8,7 +8,8 @@ const provider = new Conflux({
   // logger: console, //JSON RPC call logging
 });
 const privateKey = process.env.PRIVATE_KEY;
-const wallet = provider.Account({privateKey});
+// const wallet = provider.Account({privateKey}); //v1 SDK
+const wallet = provider.Account(privateKey); //v0 SDK
 console.log("Fulfillment address: ", wallet.address);
 
 const sendFulfillment = async (
@@ -24,13 +25,15 @@ const sendFulfillment = async (
 
   const tx = {
     to: address,
-    from: wallet.address,
+    // from: wallet.address, //v1 SDK
+    from: wallet, //v0 SDK
     data: web3.utils.bytesToHex(data),
     storageLimit: 128,
     gas: 500000
   };
 
-  return await wallet.sendTransaction(tx).executed();
+  // return await wallet.sendTransaction(tx).executed(); //v1 SDK
+  return await provider.sendTransaction(tx).executed(); //v0 SDK
 };
 
 const customParams = {
