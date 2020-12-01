@@ -4,8 +4,8 @@ const { Requester, Validator } = require('@chainlink/external-adapter')
 require('dotenv').config()
 
 const provider = new Conflux({
-  url: process.env.URL
-  // logger: console, //JSON RPC call logging
+  url: process.env.URL,
+  logger: console, //JSON RPC call logging
 })
 const privateKey = process.env.PRIVATE_KEY
 const wallet = provider.wallet.addPrivateKey(privateKey)
@@ -44,7 +44,9 @@ const customParams = {
 
 const createRequest = (input, callback) => {
   // console.log(input);
-  const validator = new Validator(callback, input, customParams)
+  const validator = new Validator(input, customParams)
+  if (validator.error) return callback(validator.error.statusCode, validator.errored)
+
   const jobRunID = validator.validated.id
   const address = validator.validated.data.address
   const dataPrefix = validator.validated.data.dataPrefix
