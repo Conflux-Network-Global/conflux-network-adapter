@@ -26,7 +26,7 @@ const sendFulfillment = async (
     to: address,
     from: wallet,
     data: web3.utils.bytesToHex(data),
-    storageLimit: 128,
+    // storageLimit: 128,
     gas: 500000
   }
 
@@ -43,7 +43,6 @@ const customParams = {
 }
 
 const createRequest = (input, callback) => {
-  // console.log(input);
   const validator = new Validator(input, customParams)
   if (validator.error) return callback(validator.error.statusCode, validator.errored)
 
@@ -51,7 +50,12 @@ const createRequest = (input, callback) => {
   const address = validator.validated.data.address
   const dataPrefix = validator.validated.data.dataPrefix
   const functionSelector = validator.validated.data.functionSelector
-  const value = validator.validated.data.value
+  let value = validator.validated.data.value
+
+  //handling the multiplying
+  if (input.data.times !== undefined) {
+    value = String(Math.round(Number(value)*input.data.times))
+  }
 
   const _handleResponse = tx => {
     // console.log(tx);
